@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{CEDFD0B4-F085-4264-BA99-8C78F186E27C}|https">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.INTEXGroup3-7 PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="INTEXGroup3-7/Program.cs">
+    <Files>
+      <File FileName="INTEXGroup3-7/Models/Cart.cs" Line="1" Column="1" />
+      <File FileName="INTEXGroup3-7/Infrastructure/PaginationTagHelper.cs" Line="1" Column="1" />
+      <File FileName="INTEXGroup3-7/Components/CartSummaryViewComponent.cs" Line="1" Column="1" />
+      <File FileName="INTEXGroup3-7/Program.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="INTEXGroup3-7" expanded="True">
+            <Node name="INTEXGroup3-7" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

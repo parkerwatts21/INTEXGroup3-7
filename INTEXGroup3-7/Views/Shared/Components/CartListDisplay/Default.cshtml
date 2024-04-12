@@ -1,0 +1,210 @@
+@{
+}
+
+@using SQLitePCL
+@model CheckoutOrderViewModel
+
+<section class="no-overflow pt-0">
+    <div class="container">
+        <form method="post" asp-controller="Home" asp-action="PredictFraud">
+        <div class="row gutter-4 justify-content-between">
+            <div class="col-lg-8">
+
+                <!-- delivery -->
+                <div class="row align-items-end mb-2">
+                    <div class="col-md-6">
+                        <h2 class="h3 mb-0"><span class="text-muted">01.</span> Address</h2>
+                    </div>
+                </div>
+                <div class="row gutter-1 mb-6">
+                    <input asp-for="@Model.Order.transaction_ID" hidden/>
+                    <input asp-for="@Model.Order.customer_ID" value="1" hidden/>
+                    <input asp-for="@Model.Order.date" value="@DateTime.Now.ToString("MM/dd/yyyy")" hidden/>
+                    <input asp-for="@Model.Order.day_of_week" value="@DateTime.Now.ToString("ddd")" hidden/>
+                    <input asp-for="@Model.Order.time" value="@DateTime.Now.Hour" hidden/>
+                    <input asp-for="@Model.Order.amount" value="@Model.Cart.CalculateTotal()" hidden/>
+                    <input asp-for="@Model.Order.type_of_transaction" value="Online" hidden/>
+                    <div class="form-group col-md-6">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="month">Birth Date</label>
+                        <input type="date" class="form-control" id="month">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="@Model.Order.country_of_transaction">Country</label>
+                        <input asp-for="@Model.Order.country_of_transaction" class="form-control" placeholder=""/>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" placeholder="">
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label asp-for="@Model.Order.shipping_address"> Shipping Address</label>
+                        <input asp-for="@Model.Order.shipping_address" class="form-control" placeholder="">
+                    </div>
+                </div>
+                <!-- payment -->
+                <div class="row align-items-end mb-2">
+                    <div class="col-md-6">
+                        <h2 class="h3 mb-0"><span class="text-muted">02.</span> Payment</h2>
+                    </div>
+                </div>
+                <label asp-for="@Model.Order.type_of_card" class="btn btn-outline-primary">
+                    <input type="radio" asp-for="@Model.Order.type_of_card" value="Visa"/> Visa
+                </label>
+                <label asp-for="@Model.Order.type_of_card" class="btn btn-outline-primary">
+                    <input type="radio" asp-for="@Model.Order.type_of_card" value="MasterCard"/> MasterCard
+                </label>
+                <input asp-for="@Model.Order.entry_mode" value="CVC" hidden/>
+                <div class="row gutter-1 mb-6">
+                    <div class="col-12 pb-1">
+                        <ul class="nav nav-tabs lavalamp" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Credit Card</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row gutter-1">
+                                    <div class="form-group col-12">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1"><i class="icon-credit-card"></i></span>
+                                            </div>
+                                            <input type="tel" class="form-control" placeholder="Card Number" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="nameOnCard">Name on Card</label>
+                                        <input type="text" class="form-control" id="nameOnCard" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label asp-for="@Model.Order.bank">Bank</label>
+                                        <input asp-for="@Model.Order.bank" class="form-control" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="row gutter-1">
+                                    <div class="form-group col-md-8">
+                                        <input type="email" class="form-control" id="mail" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <aside class="col-lg-4">
+                <div class="row">
+
+                    <!-- order preview -->
+                    <div class="col-12">
+                        <div class="card card-data bg-light">
+                            <div class="card-header py-2 px-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="fs-18 mb-0">Your Cart</h3>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a asp-page="/Cart" class="underline eyebrow">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @for (int i = 0; i < Model.Cart.Lines.Count(); i++)
+                            {
+                                <div class="card-body">
+                                    <ul class="list-group list-group-line">
+                                        <li class="list-group-item d-flex justify-content-between text-dark align-items-center">
+                                            <span class="flex-grow-1 mr-3">@Model.Cart.Lines[i].Product.name x @Model.Cart.Lines[i].Quantity</span>
+                                            <span class="flex-shrink-0">$@(@Model.Cart.Lines[i].Product.price * @Model.Cart.Lines[i].Quantity)</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- order summary -->
+                    <div class="col-12 mt-1">
+                        <div class="card card-data bg-light">
+                            <div class="card-header py-2 px-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h3 class="fs-18 mb-0">Order Summary</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-minimal">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Subtotal
+                                        @if (Model.Cart.Lines.Count() > 0)
+                                        {
+                                            <span>
+                                                @Model.Cart.CalculateTotal().ToString("c")
+                                            </span>
+                                        }
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Shipping
+                                        <span>Free</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="card-footer py-2">
+                                <ul class="list-group list-group-minimal">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center text-dark fs-18">
+                                        Total
+                                        @if (Model.Cart.Lines.Count() > 0)
+                                        {
+                                            <li>
+                                                @Model.Cart.CalculateTotal().ToString("c")
+                                            </li>
+                                        }
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- place order -->
+                    @{
+                        var fraud = false;
+                    }
+
+                    <div class="col-12 mt-1">
+                        @if (fraud == false)
+                        {
+                            <button type="submit" class="btn btn-primary btn-lg btn-block"><a>Place Order</a></button>
+                        }
+                        else
+                        {
+                            <a asp-controller="Home" asp-action="OrderPending" class="btn btn-primary btn-lg btn-block">Place Order</a>
+                        }
+                    </div>
+                </div>
+            </aside>
+        </div>
+        </form>
+    </div>
+</section>

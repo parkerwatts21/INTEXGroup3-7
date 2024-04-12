@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INTEXGroup3-7", "INTEXGroup3-7\INTEXGroup3-7.csproj", "{CEDFD0B4-F085-4264-BA99-8C78F186E27C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEDFD0B4-F085-4264-BA99-8C78F186E27C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEDFD0B4-F085-4264-BA99-8C78F186E27C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEDFD0B4-F085-4264-BA99-8C78F186E27C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEDFD0B4-F085-4264-BA99-8C78F186E27C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

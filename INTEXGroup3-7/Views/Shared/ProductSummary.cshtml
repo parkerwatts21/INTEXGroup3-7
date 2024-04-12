@@ -1,0 +1,32 @@
+@{
+    Layout = null;
+}
+
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@using INTEXGroup3_7.Infrastructure
+@model Product
+
+<div class="col-6 col-lg-4">
+  <div class="product">
+    <figure class="product-image">
+      <a asp-controller="Home" asp-action="Product" asp-route-product_ID="@Model.product_ID">
+        <img src="@Model.img_link" alt="Image-@Model.product_ID" style="max-height: 200px">
+      </a>
+    </figure>
+    <div class="product-meta">
+      <h3 class="product-title"><a asp-controller="Home" asp-action="Product" asp-route-product_ID="@Model.product_ID">@Model.name</a></h3>
+      <div class="product-price">
+        <span>$@Model.price</span>
+        <form id="@Model.product_ID" method="post" asp-page="/Cart">
+          <input type="hidden" asp-for="product_ID" />
+          <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+          <button type="submit" style="border: none; background: none;">
+            <span class="product-action underline">
+              <a class="text-primary">Add to cart</a>
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
