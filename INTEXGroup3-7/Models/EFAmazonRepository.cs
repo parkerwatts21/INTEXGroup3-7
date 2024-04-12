@@ -18,6 +18,8 @@ public class EFAmazonRepository : IAmazonRepository
     public IQueryable<Customer> Customers => _context.Customers;
 
     public IQueryable<top_product> TopProducts => _context.top_products;
+    
+    public IQueryable<UserRecommendations> UserRecommendations => _context.UserRecommendations;
 
     public IQueryable<ItemRecommendation> ItemRecommendations => _context.ItemRecommendations;
 

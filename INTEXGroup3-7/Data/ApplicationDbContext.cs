@@ -18,6 +18,8 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     
     public DbSet<ItemRecommendation> ItemRecommendations { get; set; }
     
+    public DbSet<UserRecommendations> UserRecommendations { get; set; }
+    
     public DbSet<LineItem> LineItems { get; set; }
     public DbSet<OrderPrediction> OrderPredictions { get; set; }
 }

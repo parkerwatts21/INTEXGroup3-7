@@ -37,8 +37,27 @@ public class HomeController : Controller
             .Where(p => top_products.Contains(p.product_ID))
             .Take(8)
             .ToList();
+
+        var id = 1;
+
+        var user_rec = _repo.UserRecommendations.FirstOrDefault(x => x.customer_ID == id);
+
+        var recProductNames = new List<string> 
+        { 
+            user_rec?.rec1, user_rec?.rec2, user_rec?.rec3, user_rec?.rec4, user_rec?.rec5
+        };
+
+        var groupProducts = _repo.Products.Where(x => recProductNames.Contains(x.name)).ToList();
+
+        var data = new HomePageViewModel()
+        {
+            Products = rec_products,
             
-        return View(rec_products);
+            GroupOfProducts = groupProducts
+            
+        };
+            
+        return View(data);
     }
     
     public IActionResult About()
@@ -108,10 +127,23 @@ public class HomeController : Controller
     {
         var id = product_ID;
 
-        var product = _repo.Products
-            .FirstOrDefault(x => x.product_ID == id);
+        var rec_data = _repo.ItemRecommendations.FirstOrDefault(x => x.product_ID == id);
+
+        var recProductIds = new List<int?> 
+        { 
+            rec_data?.rec1, rec_data?.rec2, rec_data?.rec3, rec_data?.rec4, rec_data?.rec5, 
+            rec_data?.rec6, rec_data?.rec7, rec_data?.rec8, rec_data?.rec9, rec_data?.rec10 
+        }.Select(x => x + 1);;
+
+        var groupProducts = _repo.Products.Where(x => recProductIds.Contains(x.product_ID)).ToList();
+
+        var data = new ProductRecommendationViewModel()
+        {
+            Product = _repo.Products.FirstOrDefault(x => x.product_ID == id),
+            GroupProducts = groupProducts
+        };
         
-        return View(product);
+        return View(data);
     }
     
     public IActionResult Privacy()
@@ -404,8 +436,6 @@ public IActionResult UserEdit(IdentityUserRole value)
         _repo.DeleteUser(value);
         return Redirect("Admin");
     }
-
-
     
     [Authorize(Roles = "Admin, Customer")]
      public IActionResult OrderConfirmed(string transactionId, decimal amount, string shippingAddress)

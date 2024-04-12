@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("INTEXGroup3-7")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+870445b22e5b059b34219625bfa1b76bcaf5f3fa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2713b067340305491ab4607c673b6e1e963473de")]
 [assembly: System.Reflection.AssemblyProductAttribute("INTEXGroup3-7")]
 [assembly: System.Reflection.AssemblyTitleAttribute("INTEXGroup3-7")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

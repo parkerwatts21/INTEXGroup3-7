@@ -10,11 +10,10 @@ public interface IAmazonRepository
     public IQueryable<Customer> Customers { get; }
 
     public IQueryable<top_product> TopProducts { get; }
-
-
+    
     public IQueryable<ItemRecommendation> ItemRecommendations { get; }
 
-
+    public IQueryable<UserRecommendations> UserRecommendations { get; }
     public IQueryable<OrderPrediction> OrderPredictions { get; }
 
 

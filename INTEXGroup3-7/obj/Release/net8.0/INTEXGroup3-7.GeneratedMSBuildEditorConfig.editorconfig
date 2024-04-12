@@ -210,6 +210,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BZGRQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Home/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BZGRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Home/Admin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9BZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -256,6 +260,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Home/Shop.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9TaG9wLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Home/UserDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Vc2VyRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Home/UserEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Vc2VyRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/Views/Shared/Components/CartListDisplay/Default.cshtml]

@@ -2,7 +2,12 @@
     ViewData["Title"] = "Home";
 }
 
-@model List<Product>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@using Microsoft.AspNetCore.Identity
+@model HomePageViewModel
+
 
 <head>
     <meta charset="UTF-8">
@@ -80,24 +85,49 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="owl-carousel owl-carousel-arrows visible" data-items="[4,4,2,1]" data-margin="10" data-loop="true" data-dots="true" data-nav="true">
-              @foreach (var product in Model)
+              @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
               {
-                <div class="product" style="margin: 0 10px;">
-                  <figure class="product-image">
-                    <a href="#!">
-                      <img src="@product.img_link" alt="Image" style="width: 100%; max-height: 300px; min-height: 200px;">
-                    </a>
-                  </figure>
-                  <div class="product-meta">
-                    <h3 class="product-title"><a href="#!">@product.name</a></h3>
-                    <div class="product-price">
-                      <span>$@product.price</span>
-                      <span class="product-action">
-                        <a href="#!">Add to cart</a>
-                      </span>
-                    </div>
-                  </div>
-                </div>
+                  @foreach (var product in Model.GroupOfProducts)
+                  {
+                      <div class="product" style="margin: 0 10px;">
+                          <figure class="product-image">
+                              <a href="#!">
+                                  <img src="@product.img_link" alt="Image" style="width: 100%; max-height: 300px; min-height: 200px;">
+                              </a>
+                          </figure>
+                          <div class="product-meta">
+                              <h3 class="product-title"><a href="#!">@product.name</a></h3>
+                              <div class="product-price">
+                                  <span>$@product.price</span>
+                                  <span class="product-action">
+                                      <a href="#!">Add to cart</a>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                  }
+              }
+              else
+              {
+                  @foreach (var product in Model.Products)
+                  {
+                      <div class="product" style="margin: 0 10px;">
+                          <figure class="product-image">
+                              <a href="#!">
+                                  <img src="@product.img_link" alt="Image" style="width: 100%; max-height: 300px; min-height: 200px;">
+                              </a>
+                          </figure>
+                          <div class="product-meta">
+                              <h3 class="product-title"><a href="#!">@product.name</a></h3>
+                              <div class="product-price">
+                                  <span>$@product.price</span>
+                                  <span class="product-action">
+                                      <a href="#!">Add to cart</a>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                  }
               }
             </div>
           </div>
