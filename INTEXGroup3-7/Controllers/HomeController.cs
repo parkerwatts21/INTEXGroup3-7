@@ -27,7 +27,7 @@ public class HomeController : Controller
         _repo = temp;
         // bring in Onnx prediction model
         _session = new InferenceSession(
-            "/Users/parkerwatts/RiderProjects/INTEXGroup3-7/INTEXGroup3-7/fraud_model.onnx");
+            "fraud_model.onnx");
     }
 
     public IActionResult Index()

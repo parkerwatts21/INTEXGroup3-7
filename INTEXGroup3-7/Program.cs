@@ -74,11 +74,11 @@ internal class Program
             context.Response.Headers.Add("Referrer-Policy","strict-origin-when-cross-origin");
             // context.Response.Headers.Add(
             //     "Content-Security-Policy",  
-            //         "default-src * ;" +
-            //            "script-src * ;" +  
-            //             "style-src * https://fonts.googleapis.com https://getbootstrap.com/;" +  
-            //             "img-src * 'https' data http://www.w3.org https://www.lego.com https://images.brickset.com https://m.media-amazon.com https://www.brickeconomy.com" +
-            //             "font-src * https://fonts.googleapis.com https://fonts.gstatic.com/;" +
+            //         "default-src 'self' ;" +
+            //            "script-src 'self' ;" +  
+            //             "style-src 'self' https://fonts.googleapis.com https://getbootstrap.com/;" +  
+            //             "img-src 'self' 'https' data http://www.w3.org https://www.lego.com https://images.brickset.com https://m.media-amazon.com https://www.brickeconomy.com" +
+            //             "font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com/;" +
             //             "media-src 'self'; " +
             //              "frame-src 'self'; "
             //     );  
